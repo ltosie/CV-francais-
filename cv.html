@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV</title>
+</head>
+<body>
+    <h1>CV</h1>
+
+    <embed id="pdfViewer" src="document_fr.pdf" type="application/pdf" width="100%" height="600px" />
+
+    <button onclick="togglePDF()">Voir en anglais</button>
+
+    <script>
+        function togglePDF() {
+            var pdfViewer = document.getElementById("pdfViewer");
+            var currentSrc = pdfViewer.getAttribute("src");
+            
+            if (currentSrc === "CV_francais.pdf") {
+                pdfViewer.setAttribute("src", "CV_anglais.pdf");
+            } else {
+                pdfViewer.setAttribute("src", "CV_francais.pdf");
+            }
+        }
+    </script>
+</body>
+</html>
