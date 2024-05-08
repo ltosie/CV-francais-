@@ -4,24 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* to remove scrollbars */
+            position: relative; /* Ensure positioning context for absolute positioned elements */
+        }
+        iframe {
+            width: 100vw;
+            height: 100vh; /* Occupy full viewport height */
+            border: none; /* remove border */
+            display: block; /* Ensures the iframe takes up space even if it's empty */
+        }
+        .language-buttons {
+            position: absolute; /* Position buttons absolutely relative to the body */
+            top: 40px; /* Adjust top position as needed */
+            right: 40px; /* Adjust right position as needed */
+            z-index: 999; /* Ensure the buttons appear on top of everything */
+        }
+    </style>
 </head>
 <body>
-    <h1>CV</h1>
+    <iframe id="pdfViewer" src="CV_francais.pdf"></iframe>
 
-    <embed id="pdfViewer" src="CV_francais.pdf" type="application/pdf" width="100%" height="600px" />
-
-    <button onclick="togglePDF()">Voir en anglais</button>
+    <div class="language-buttons">
+        <button onclick="switchToFrench()" style ="font-size: 18px; padding: 10px; font-family: Arial, sans-serif;font-weight: bolder;">Fr</button>
+        <button onclick="switchToEnglish()" style ="font-size: 18px; padding: 10px; font-family: Arial, sans-serif; font-weight: bolder">En</button>
+    </div>
 
     <script>
-        function togglePDF() {
-            var pdfViewer = document.getElementById("pdfViewer");
-            var currentSrc = pdfViewer.getAttribute("src");
-            
-            if (currentSrc === "CV_francais.pdf") {
-                pdfViewer.setAttribute("src", "CV_anglais.pdf");
-            } else {
-                pdfViewer.setAttribute("src", "CV_francais.pdf");
-            }
+        function switchToFrench() {
+            document.getElementById("pdfViewer").setAttribute("src", "CV_francais.pdf");
+        }
+
+        function switchToEnglish() {
+            document.getElementById("pdfViewer").setAttribute("src", "CV_anglais.pdf");
         }
     </script>
 </body>
